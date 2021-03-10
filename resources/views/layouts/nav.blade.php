@@ -60,20 +60,31 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="{{route('home')}}">Home</a></li>  
                 @Auth
-                <li><a href="{{route('project.create')}}">New Project</a></li>  
-                <li><a href="{{route('setting.edit')}}">Setting</a></li>  
+                    <li>
+                        <a href="{{route('project.create')}}">New Project</a>
+                    </li>  
+                    <li>
+                        <a href="{{route('setting.edit')}}">Setting</a>
+                    </li>  
 
-                <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); 
-                    document.getElementById('logout-form').submit();">
-                logout
-                </a></li>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-                </form>
-                                    
+                    <li>
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); 
+                                                        document.getElementById('logout-form').submit();">
+                            logout
+                        </a>
+                    </li>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                                        
                 @else 
-                    <li><a href="{{ route('register') }}">Register</a></li>
-                    <li><a href="{{ route('login') }}">Login</a></li>
+                    <li>
+                        <a href="{{ route('register') }}">Register</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('login') }}">Login</a>
+                    </li>
                 @endauth                 
               
             </ul>
