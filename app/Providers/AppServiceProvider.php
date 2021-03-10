@@ -13,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton('App\Http\ViewComposers\SettingComposer');
     }
 
     /**
@@ -23,6 +23,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer(
+            ['layouts.app','home','setting.edit_setting'], 'App\Http\ViewComposers\SettingComposer'
+        );
     }
 }
