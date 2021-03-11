@@ -26,7 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $projects = Project::orderBy('created_at','desc')->paginate(8);
+        $projects = Project::latest()->paginate(8);
         // $setting = Setting::first();
 
         return view('home',compact('projects'));

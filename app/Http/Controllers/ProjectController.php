@@ -13,7 +13,7 @@ class ProjectController extends Controller
     use ImageUploadTrait;
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('Admin')->except('show');
     }
 
     

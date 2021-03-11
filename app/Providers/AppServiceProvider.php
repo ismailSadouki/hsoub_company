@@ -26,5 +26,8 @@ class AppServiceProvider extends ServiceProvider
         view()->composer(
             ['layouts.app','home','setting.edit_setting'], 'App\Http\ViewComposers\SettingComposer'
         );
+        \Blade::if('admin',function(){
+            return auth()->check() && auth()->user()->isAdmin();
+        });
     }
 }

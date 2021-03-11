@@ -92,12 +92,14 @@
                                                     <img src="{{asset('storage/'.$project->image)}}" width="120" height="230" "alt="" />
                                                     <div class="port_overlay text-center">
                                                         <a  class="popup addcart" style="background-color: #00a885" id="{{$project->id}}" data-toggle="modal" href="" data-target="#cartmodal" onclick="projectshow(this.id)"><i class="fa fa-eye" ></i></a>
-                                                        <a href="{{route('project.edit',$project->id)}}" class="popup" style="background-color: #00a885"><i class="fa fa-pencil-square-o" ></i></a>
-                                                        <form action="{{route('project.destroy',$project->id)}}" method="POST"><br>
-                                                            @method('DELETE')
-                                                            @csrf
-                                                          <input type="submit" class="popup btn btn-danger " value="Delete">
-                                                        </form>
+                                                        @admin
+                                                            <a href="{{route('project.edit',$project->id)}}" class="popup" style="background-color: #00a885"><i class="fa fa-pencil-square-o" ></i></a>
+                                                            <form action="{{route('project.destroy',$project->id)}}" method="POST"><br>
+                                                                @method('DELETE')
+                                                                @csrf
+                                                            <input type="submit" class="popup btn btn-danger " value="Delete">
+                                                            </form>
+                                                        @endadmin
                                                     </div>
                                                 </div>
                                                 <div class="port_caption m-top-20">

@@ -23,18 +23,7 @@
         </div>
     </div>
 
-    <!-- Start Top Search -->
-    <div class="top-search">
-        <div class="container">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                <input type="text" class="form-control" placeholder="Search">
-                <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
-            </div>
-        </div>
-    </div>
-    <!-- End Top Search -->
-
+  
 
     <div class="container"> 
         <div class="attr-nav">
@@ -60,13 +49,14 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="{{route('home')}}">Home</a></li>  
                 @Auth
+                @admin
                     <li>
                         <a href="{{route('project.create')}}">New Project</a>
                     </li>  
                     <li>
                         <a href="{{route('setting.edit')}}">Setting</a>
                     </li>  
-
+                @endadmin    
                     <li>
                         <a href="{{ route('logout') }}" onclick="event.preventDefault(); 
                                                         document.getElementById('logout-form').submit();">
