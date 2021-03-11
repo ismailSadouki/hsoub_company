@@ -27,7 +27,7 @@ class StoreProject extends FormRequest
             'title' => 'required',
             'link' => 'nullable|active_url',
             'desc' => 'required',
-            'image' => 'image|required',
+            'image' => 'image',
         ];
     }
 }

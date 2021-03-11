@@ -6,7 +6,7 @@ trait ImageUploadTrait
 {
     protected $image_path = "app/public/images";
     protected $img_height = 230;
-    protected $img_width = 120;
+    protected $img_width = 262.5;
 
     public function uploadImage($img)
     {

@@ -48,7 +48,7 @@
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
                 <i class="fa fa-bars"></i>
             </button>
-            <a class="navbar-brand" href="#brand">
+            <a class="navbar-brand" href="{{url('/')}}">
                 <img src="{{asset('storage/images/logo.png')}}" width="40" height="30" alt="">
             </a>
 

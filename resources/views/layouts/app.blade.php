@@ -30,6 +30,19 @@
         <link rel="stylesheet" href="{{asset('assets/css/responsive.css')}}" />
 
         <script src="{{asset('assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js')}}"></script>
+        <style>
+            .image_project{
+                width: 262.5px;
+                height: 230px;
+            }
+            .modal-backdrop.in{
+                opacity: 0;
+                position: relative;
+            }
+            .modal {
+                position: fixed;
+            }
+        </style>
     </head>
 
     <body data-spy="scroll" data-target=".navbar-collapse">
@@ -86,6 +99,9 @@
         <script>
             $('.alert-success').delay(3000).fadeOut(350);
         </script>
+
+        @yield('script')
+        
     </body>
             
 </html>

@@ -44,14 +44,10 @@
                 <div class="main_business">
                     <div class="col-md-6">
                         <div >
-                            <div class="slid_shap bg-grey"></div>
-                        
-                              
+                            <div class="slid_shap bg-grey"></div>            
                                     <div>
                                         <img src="{{asset('storage/images/logo.png')}}" alt="" />
                                     </div>
-                           
-                      
                         </div>
                     </div>
                     
@@ -75,6 +71,8 @@
     <section id="portfolio" class="product">
         <div class="container">
             <div class="main_product roomy-80">
+            @include('alerts.success')
+
                 <div class="head_title text-center fix">
                     <h2 class="text-uppercase">Portfolio</h2>
                 </div>
@@ -93,7 +91,13 @@
                                                 <div class="port_img">
                                                     <img src="{{asset('storage/'.$project->image)}}" width="120" height="230" "alt="" />
                                                     <div class="port_overlay text-center">
-                                                        <a href="{{asset('storage/'.$project->image)}} " class="popup-img">+</a>
+                                                        <a  class="popup addcart" style="background-color: #00a885" id="{{$project->id}}" data-toggle="modal" href="" data-target="#cartmodal" onclick="projectshow(this.id)"><i class="fa fa-eye" ></i></a>
+                                                        <a href="{{route('project.edit',$project->id)}}" class="popup" style="background-color: #00a885"><i class="fa fa-pencil-square-o" ></i></a>
+                                                        <form action="{{route('project.destroy',$project->id)}}" method="POST"><br>
+                                                            @method('DELETE')
+                                                            @csrf
+                                                          <input type="submit" class="popup btn btn-danger " value="Delete">
+                                                        </form>
                                                     </div>
                                                 </div>
                                                 <div class="port_caption m-top-20">
@@ -215,5 +219,66 @@
     </section><!-- End off Brand section -->
 
 
+
+
+
+    <!-- Modal -->
+<div class="modal fade" id="cartmodal" >
+    <div class="modal-dialog modal-lg" >
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="text-uppercase" id="ptitle" style="transform: translateX(50%)"></h5>
+          </div>
+          <div class="modal-body">
+              <div class="row">
+                    <div class="col-md-4">
+                        <div>
+                            <div>
+                                <img src="" id="pimage" alt="" />
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6" >
+                        <div class="business_item sm-m-top-50">
+                            <p class="m-top-40" id="pdesc"></p>
+                            
+
+                        </div>
+                    </div>
+                    
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class=" btn btn-gray" data-dismiss="modal" aria-label="Close">Cancel</button>
+            <a href="" class="btn btn-primary" id="plink" style="cursor:pointer">Show</a>
+          </div>
+        </div>
+      </div>
+  </div>
+  
+
+
+@endsection
+
+@section('script')
+
+<script type="text/javascript">
+    function projectshow(id){
+        $.ajax({
+            url: "{{ url('/project/') }}/"+id,
+            type: "GET",
+            dataType: "json",
+            success:function(data){
+                $('#ptitle').text(data.project.title);
+                $('#pimage').attr('src',"{{asset('storage/')}}/"+data.project.image);
+                $('#plink').attr('href',data.project.link);
+                $('#pdesc').text(data.project.desc);
+            }
+        })
+    }
+
+ 
+</script>
 
 @endsection

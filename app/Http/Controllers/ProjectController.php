@@ -6,6 +6,7 @@ use App\Http\Requests\StoreProject;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Traits\ImageUploadTrait;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -15,15 +16,7 @@ class ProjectController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -63,32 +56,42 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Project $project)
     {
-        //
+        return response()->json(array(
+            'project' => $project
+        ));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $project
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Project $project)
     {
-        //
+        return view('project.edit',compact('project'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  int  $project
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreProject $request,Project $project)
     {
-        //
+        $project->title = $request->title;
+        $project->link = $request->link;
+        $project->desc = $request->desc;
+        if($request->has('image')){
+            Storage::disk('public')->delete($project->image);
+            $project->image = $this->uploadImage($request->image);
+        }
+        $project->update();
+        return back()->with('success','Project Updated Successfully');
     }
 
     /**
@@ -97,8 +100,11 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Project $project)
     {
-        //
+        Storage::disk('public')->delete($project->image);
+        $project->delete();
+
+        return back()->with('success','Project Deleted Successfully');
     }
 }

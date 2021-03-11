@@ -24,5 +24,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('/project', App\Http\Controllers\ProjectController::class);
 
 
+
 Route::get('/site/setting', [App\Http\Controllers\SettingController::class,'edit'])->name('setting.edit');
 Route::post('/site/setting/update/', [App\Http\Controllers\SettingController::class,'update'])->name('setting.update');

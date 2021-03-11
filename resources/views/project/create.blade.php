@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<section  id="home" class="home bg-black" style="background-image: none">
+<section  id="home" class="home bg-black" style="background-image: none;transform:translateX(20%)">
     <div class="container">
         @include('alerts.success')
      <div class="row justify-content-center">   
