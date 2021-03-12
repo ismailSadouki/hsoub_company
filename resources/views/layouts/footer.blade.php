@@ -97,13 +97,19 @@
                 <div class="col-md-3">
                     <div class="widget_item widget_newsletter sm-m-top-50">
                         <h5 class="text-white">Newsletter</h5>
-                        <form class="form-inline m-top-30">
+                        <div class="form-inline m-top-30">
                             <div class="form-group">
-                                <input type="email" class="form-control" placeholder="Enter you Email">
-                                <button type="submit" class="btn text-center"><i class="fa fa-arrow-right"></i></button>
+                                <form action="{{route('newsletter.subscribe')}}" method="POST" >
+                                    @csrf
+                                    <input type="email" name="email" class="form-control" placeholder="Enter you Email">
+                                    <button type="submit" class="btn text-center"><i class="fa fa-arrow-right"></i></button>
+                                </form>
+                                @error('email')
+                                    <span style="color:red">{{$message}}</span>
+                                @enderror
                             </div>
 
-                        </form>
+                        </div>
                         <div class="widget_brand m-top-40">
                             <a href="" class="text-uppercase"><img src="{{asset('storage/images/logo.png')}}" alt=""></a>
                             

@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -14,16 +18,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index']);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
-Route::resource('/project', App\Http\Controllers\ProjectController::class);
+//Project Url
+    Route::resource('/project', ProjectController::class);
 
 
+//Setting Url
+    Route::get('/setting', [SettingController::class,'edit'])->name('setting.edit');
+    Route::post('/setting/update/', [SettingController::class,'update'])->name('setting.update');
 
-Route::get('/setting', [App\Http\Controllers\SettingController::class,'edit'])->name('setting.edit');
-Route::post('/setting/update/', [App\Http\Controllers\SettingController::class,'update'])->name('setting.update');
+//Newsletter Url
+    Route::get('/newsletter/create',[NewsletterController::class, 'create'])->name('newsletter.create')->middleware('Admin');
+    Route::post('/newsletter/send',[NewsletterController::class , 'sendNewsletter'])->name('newsletter.send')->middleware('Admin');
+    Route::post('/newsletter/subscribe/', [NewsletterController::class,'subscribe'])->name('newsletter.subscribe');

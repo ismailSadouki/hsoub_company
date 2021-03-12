@@ -43,15 +43,20 @@
 
         </div>
         <!-- End Header Navigation -->
-
         <!-- navbar menu -->
         <div class="collapse navbar-collapse" id="navbar-menu">
+
+            @include('alerts.success')
+
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="{{route('home')}}">Home</a></li>  
                 @Auth
                 @admin
                     <li>
                         <a href="{{route('project.create')}}">New Project</a>
+                    </li>  
+                    <li>
+                        <a href="{{route('newsletter.create')}}">Newsletter</a>
                     </li>  
                     <li>
                         <a href="{{route('setting.edit')}}">Setting</a>

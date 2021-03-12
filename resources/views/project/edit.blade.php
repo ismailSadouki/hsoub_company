@@ -3,7 +3,6 @@
 @section('content')
 <section  id="home" class="home bg-black" style="background-image: none; transform:translateX(20%)">
     <div class="container">
-        @include('alerts.success')
         <div class="row justify-content-center">   
             <div class="col-sm-6 " >
                 <div class="head_title">

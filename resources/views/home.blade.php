@@ -71,7 +71,6 @@
     <section id="portfolio" class="product">
         <div class="container">
             <div class="main_product roomy-80">
-            @include('alerts.success')
 
                 <div class="head_title text-center fix">
                     <h2 class="text-uppercase">Portfolio</h2>
@@ -91,7 +90,7 @@
                                                 <div class="port_img">
                                                     <img src="{{asset('storage/'.$project->image)}}" width="120" height="230" "alt="" />
                                                     <div class="port_overlay text-center">
-                                                        <a  class="popup addcart" style="background-color: #00a885" id="{{$project->id}}" data-toggle="modal" href="" data-target="#cartmodal" onclick="projectshow(this.id)"><i class="fa fa-eye" ></i></a>
+                                                        <a  class="popup " style="background-color: #00a885" id="{{$project->id}}" data-toggle="modal" href="" data-target="#projectmodal" onclick="projectshow(this.id)"><i class="fa fa-eye" ></i></a>
                                                         @admin
                                                             <a href="{{route('project.edit',$project->id)}}" class="popup" style="background-color: #00a885"><i class="fa fa-pencil-square-o" ></i></a>
                                                             <form action="{{route('project.destroy',$project->id)}}" method="POST"><br>
@@ -225,7 +224,7 @@
 
 
     <!-- Modal -->
-<div class="modal fade" id="cartmodal" >
+<div class="modal fade" id="projectmodal" >
     <div class="modal-dialog modal-lg" >
         <div class="modal-content">
           <div class="modal-header">

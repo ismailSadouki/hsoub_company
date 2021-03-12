@@ -20,8 +20,11 @@ class SettingController extends Controller
 
     public function update(StoreSetting $request)
     {
- 
-        $setting = Setting::first();
+        if(isset($request->id)){
+            $setting = Setting::first();
+        }else {
+            $setting = new Setting;
+        }
         $setting->company_name = $request->company_name;
         $setting->company_address = $request->company_address;
         $setting->phone = $request->phone;

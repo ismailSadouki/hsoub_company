@@ -3,7 +3,6 @@
 @section('content')
 <section  id="home" class="home bg-black" style="background-image: none;transform:translateX(20%)">
     <div class="container">
-        @include('alerts.success')
         <div class="row justify-content-center">   
             <div class="col-sm-6 " >
                 <div class="head_title">
@@ -11,6 +10,7 @@
                 </div>
                 <form action="{{route('setting.update')}}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    <input type="hidden" name="id" value="{{$setting->id ?? ''}}">
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
@@ -82,7 +82,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <h5>Facebook</h5>
-                                <input type="text" class="form-control " name="facebook" value="{{$setting->facebook ?? ''}}" placeholder="Company name" >
+                                <input type="text" class="form-control " name="facebook" value="{{$setting->facebook ?? ''}}" placeholder="Facebook Link" >
 
                                 @error('facebook')
                                     <span class="invalid-feedback" role="alert">
@@ -95,7 +95,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <h5>Twitter</h5>
-                                <input type="text" class="form-control " name="twitter" value="{{$setting->twitter ?? ''}}" placeholder="Company Address" >
+                                <input type="text" class="form-control " name="twitter" value="{{$setting->twitter ?? ''}}" placeholder="Twitter Link" >
 
                                 @error('twitter')
                                     <span class="invalid-feedback" role="alert">
@@ -108,7 +108,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <h5>Linked In</h5>
-                                <input type="text" class="form-control " name="linked_in" value="{{$setting->linked_in ?? ''}}" placeholder="Company Address" >
+                                <input type="text" class="form-control " name="linked_in" value="{{$setting->linked_in ?? ''}}" placeholder="LinkedIn Link" >
 
                                 @error('linked_in')
                                     <span class="invalid-feedback" role="alert">
