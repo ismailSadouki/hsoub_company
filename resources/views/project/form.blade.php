@@ -1,19 +1,33 @@
 @csrf
 <div class="row">
     <div class="col-sm-6">
-        <div class="form-group">
-            <input type="text" class="form-control " name="title" value="{{$project->title ?? old('title')}}" placeholder="Title" >
+        <div class="form-group" >
+            <input type="text" class="form-control " name="title_ar" value="{{$project->title_ar ?? old('title_ar')}}" placeholder="{{__('other.title in Arabic')}}" >
 
-            @error('title')
+            @error('title_ar')
                 <span class="invalid-feedback" role="alert">
                     <strong style="color: red">{{$message}}</strong>
                 </span>
             @enderror
         </div>
     </div>
+
     <div class="col-sm-6">
         <div class="form-group">
-            <input type="text" class="form-control" name="link" value="{{$project->link ?? old('link')}}" placeholder="Link" >
+            <input type="text" class="form-control " name="title_en" value="{{$project->title_en ?? old('title_en')}}" placeholder="{{__('other.title in English')}}" >
+
+            @error('title_en')
+                <span class="invalid-feedback" role="alert">
+                    <strong style="color: red">{{$message}}</strong>
+                </span>
+            @enderror
+        </div>
+    </div>
+
+
+    <div class="col-sm-12">
+        <div class="form-group">
+            <input type="text" class="form-control" name="link" value="{{$project->link ?? old('link')}}" placeholder="{{__('other.Link')}}" >
 
             @error('link')
                 <span class="invalid-feedback" role="alert">
@@ -27,8 +41,17 @@
 
 
 <div class="form-group">
-    <textarea class="form-control " name="desc" rows="8" placeholder="Description">{{$project->desc ?? old('desc')}}</textarea>
-    @error('desc')
+    <textarea class="form-control " name="desc_en" rows="8" placeholder="{{__('other.Description in English')}}">{{$project->desc_en ?? old('desc_en')}}</textarea>
+    @error('desc_en')
+        <span class="invalid-feedback" role="alert">
+            <strong style="color: red">{{$message}}</strong>
+        </span>
+    @enderror
+</div>
+
+<div class="form-group" >
+    <textarea class="form-control " name="desc_ar" rows="8" placeholder="{{__('other.Description in Arabic')}}">{{$project->desc_ar ?? old('desc_ar')}}</textarea>
+    @error('desc_ar')
         <span class="invalid-feedback" role="alert">
             <strong style="color: red">{{$message}}</strong>
         </span>
@@ -36,11 +59,11 @@
 </div>
 
 <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-12">
         <div class="form-group">
-            <input accept="image/*" id="image_file" type="file" class="form-control" name="image"  placeholder="Image" {{isset($project) ? '' : 'required=""'}} >
+            <input accept="image/*" id="image_file" type="file" class="form-control" name="image"  placeholder="{{__('other.Image')}}" {{isset($project) ? '' : 'required=""'}} >
             <br>
-            <img src="{{isset($project) ? asset('storage/'.$project->image) : ''}}"  id="image" alt="">
+            <img src="{{isset($project) ? asset('storage/'.$project->image) : ''}}"  id="image" alt="" style="transform: translateX(50%)">
  
              
             @error('image')

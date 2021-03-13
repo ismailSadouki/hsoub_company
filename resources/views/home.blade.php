@@ -2,7 +2,9 @@
 
 @section('content')
     <!--Home Sections-->
-
+    @php
+        $Direction = LaravelLocalization::getCurrentLocaleDirection();
+    @endphp
     <section id="home" class="home bg-black fix">
         <div class="overlay"></div>
         <div class="container">
@@ -12,9 +14,8 @@
                         <div class="hello_slid">
                             <div class="slid_item">
                                 <div class="home_text ">
-                                    <h2 class="text-white">Welcome to <strong>{{$setting->company_name ?? ''}}</strong></h2>
-                                    <h1 class="text-white">On a Mission to Develop the Arab World</h1>
-                                    <h3 class="text-white">- We work to empower <strong>the youth. </strong> We are {{$setting->company_name ?? ''}}. -</h3>
+                                    <h2 class="text-white">{{__('home.Welcome to')}} <strong>{{$setting->company_name ?? ''}}</strong></h2>
+                                    <h1 class="text-white">{{__('home.On a Mission to Develop the Arab World')}}</h1>
                                 </div>
 
                                 {{-- <div class="home_btns m-top-40">
@@ -38,26 +39,23 @@
    
 
     <!--Business Section-->
-    <section  class="business bg-grey roomy-70" id="about_us">
+    <section  class="business bg-grey roomy-70" id="about_us" dir="{{$Direction }}">
         <div class="container">
             <div class="row">
                 <div class="main_business">
-                    <div class="col-md-6">
-                        <div >
-                            <div class="slid_shap bg-grey"></div>            
+                    <div class="col-md-6 " style="{{$Direction  == 'rtl' ? 'float: right;' : ''}}"  >
+                        <div>
+                            <div class="slid_shap bg-grey " ></div>            
                                     <div>
                                         <img src="{{asset('storage/images/logo.png')}}" alt="" />
-                                    </div>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="col-md-6" >
-                        <div class="business_item sm-m-top-50">
-                            <h2 class="text-uppercase"><strong>ABOUT</strong> Us</h2>
-                            
+                    <div class="col-md-6 " >
+                        <div class="business_item sm-m-top-50 ">
+                            <h2 class="text-uppercase"><strong>{{__('home.ABOUT')}}</strong> {{__('home.Us')}}</h2>                        
                             <p class="m-top-20">{{$setting->about_us ?? ''}}</p>
-
-                          
 
                         </div>
                     </div>
@@ -68,37 +66,39 @@
 
 
     <!--product section-->
-    <section id="portfolio" class="product">
-        <div class="container">
+    <section id="portfolio" class="product" >
+        <div class="container" >
             <div class="main_product roomy-80">
 
                 <div class="head_title text-center fix">
-                    <h2 class="text-uppercase">Portfolio</h2>
+                    <h2 class="text-uppercase">{{__('home.Portfolio')}}</h2>
                 </div>
 
                 <div class=" slide" >
                     <!-- Indicators -->
                    
                     <!-- Wrapper for slides -->
-                    <div class="carousel-inner" role="listbox">
+                    <div class="carousel-inner" role="listbox" >
                         <div class="item active">
                             <div class="container">
-                                <div class="row">
-                                    @forelse ($projects as $project)
-                                        <div class="col-sm-3 ">
+                                <div class="row" >
+                                   @forelse ($projects as $project)
+                                        <div class="col-sm-3" style="{{$Direction  == 'rtl' ? 'float: right;' : ''}}">
                                             <div class="port_item xs-m-top-30 ">
                                                 <div class="port_img">
                                                     <img src="{{asset('storage/'.$project->image)}}" width="120" height="230" "alt="" />
                                                     <div class="port_overlay text-center">
-                                                        <a  class="popup " style="background-color: #00a885" id="{{$project->id}}" data-toggle="modal" href="" data-target="#projectmodal" onclick="projectshow(this.id)"><i class="fa fa-eye" ></i></a>
+                                                        <a  class="popup" style="background-color: #00a885" id="{{$project->id}}" data-toggle="modal" href="" data-target="#projectmodal" onclick="projectshow(this.id)"><i class="fa fa-eye" ></i></a>
+
                                                         @admin
                                                             <a href="{{route('project.edit',$project->id)}}" class="popup" style="background-color: #00a885"><i class="fa fa-pencil-square-o" ></i></a>
                                                             <form action="{{route('project.destroy',$project->id)}}" method="POST"><br>
                                                                 @method('DELETE')
                                                                 @csrf
-                                                            <input type="submit" class="popup btn btn-danger " value="Delete">
+                                                            <input type="submit" class="popup btn btn-danger " value="{{__('other.Delete')}}">
                                                             </form>
                                                         @endadmin
+                                                        
                                                     </div>
                                                 </div>
                                                 <div class="port_caption m-top-20">
@@ -108,7 +108,7 @@
                                         </div> 
                                     @empty
                                             
-                                        <h2>nothing</h2>    
+                                        <h2>{{__('home.nothing')}}</h2>    
                                         
                                     @endforelse
                                 </div>
@@ -225,14 +225,14 @@
 
     <!-- Modal -->
 <div class="modal fade" id="projectmodal" >
-    <div class="modal-dialog modal-lg" >
+    <div class="modal-dialog modal-lg"  >
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="text-uppercase" id="ptitle" style="transform: translateX(50%)"></h5>
           </div>
           <div class="modal-body">
               <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-4" style="{{$Direction  == 'rtl' ? 'float: right;' : ''}}">
                         <div>
                             <div>
                                 <img src="" id="pimage" alt="" />
@@ -251,8 +251,8 @@
               </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class=" btn btn-gray" data-dismiss="modal" aria-label="Close">Cancel</button>
-            <a href="" class="btn btn-primary" id="plink" style="cursor:pointer">Show</a>
+            <button type="button" class=" btn btn-gray" data-dismiss="modal" aria-label="Close">{{__('home.Cancel')}}</button>
+            <a href="" class="btn btn-primary" id="plink" style="cursor:pointer">{{__('home.Show')}}</a>
           </div>
         </div>
       </div>

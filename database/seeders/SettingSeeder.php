@@ -17,9 +17,11 @@ class SettingSeeder extends Seeder
         Setting::create([
             'phone' => '1122331212',
             'email' => 'ismail.sadouki.0@gmail.com',
-            'company_name' => 'hsoub',
-            'company_address' => 'algeria',
-            'about_us' => '
+            'company_name_en' => 'hsoub',
+            'company_name_ar' => 'حسوب',
+            'company_address_en' => 'algeria',
+            'company_address_ar' => 'الجزائر',
+            'about_us_en' => '
 
             Hsoub is a technology group on a mission to develop the Arab World. We build products across a range of sectors and functions that enable new work, education, and communication opportunities for the region.
             
@@ -27,10 +29,17 @@ class SettingSeeder extends Seeder
             
             Hsoub operates the two largest Arabic freelancing platforms Mostaql and Khamsat with other products in its portfolio combining 2,500,000+ registered users.
             ',
+            'about_us_ar' => '
+
+            حسوب مجموعة تقنية في مهمة لتطوير العالم العربي. نحن نبني منتجات تركز على مستقبل العمل، التعليم والتواصل. منذ تأسيسنا في 2011 في المملكة المتحدة، استثمرنا في بناء منظومة بهدف مساعدة الشباب العرب على التطور والنمو في عالم مليء بالفرص والتحديات.
+            
+            تدير حسوب أكبر منصتي عمل حر عربيتين مستقل وخمسات مع مجموعة من المنتجات الأخرى في محفظتها تضم أكثر من 2,500,000 مستخدم مسجل.
+            ',
             'facebook' => 'https://www.facebook.com/Hsoub',
             'twitter' => 'https://twitter.com/Hsoub',
             'linked_in' => 'https://www.linkedin.com/company/hsoub',
         ]);
+
 
     }
 }

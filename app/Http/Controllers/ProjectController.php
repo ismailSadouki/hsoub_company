@@ -7,6 +7,7 @@ use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Traits\ImageUploadTrait;
 use Illuminate\Support\Facades\Storage;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class ProjectController extends Controller
 {
@@ -38,14 +39,16 @@ class ProjectController extends Controller
     {
 
         $project = new Project;
-        $project->title = $request->title;
-        $project->desc = $request->desc;
+        $project->title_ar = $request->title_ar;
+        $project->title_en = $request->title_en;
         $project->link = $request->link;
+        $project->desc_ar = $request->desc_ar;
+        $project->desc_en = $request->desc_en;
         $project->image = $this->uploadImage( $request->image );
 
         $project->save();
         
-        return back()->with('success','Project Added successfully');
+        return back()->with('success',__('messages.Project Added successfully'));
        
 
     }
@@ -56,8 +59,20 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Project $project)
+    public function show( $id)
     {
+        $lang = LaravelLocalization::getCurrentLocale();
+
+        $project = Project::where('id',$id)->select(
+
+            'id',
+            'title_'.$lang.' as title',
+            'desc_'.$lang.' as desc',   
+            'image',
+            'link'
+
+       )->first();
+       
         return response()->json(array(
             'project' => $project
         ));
@@ -83,15 +98,17 @@ class ProjectController extends Controller
      */
     public function update(StoreProject $request,Project $project)
     {
-        $project->title = $request->title;
+        $project->title_ar = $request->title_ar;
+        $project->title_en = $request->title_en;
         $project->link = $request->link;
-        $project->desc = $request->desc;
+        $project->desc_ar = $request->desc_ar;
+        $project->desc_en = $request->desc_en;
         if($request->has('image')){
             Storage::disk('public')->delete($project->image);
             $project->image = $this->uploadImage($request->image);
         }
         $project->update();
-        return back()->with('success','Project Updated Successfully');
+        return back()->with('success',__('messages.Project Updated Successfully'));
     }
 
     /**
@@ -105,6 +122,6 @@ class ProjectController extends Controller
         Storage::disk('public')->delete($project->image);
         $project->delete();
 
-        return back()->with('success','Project Deleted Successfully');
+        return back()->with('success',__('messages.Project Deleted Successfully'));
     }
 }

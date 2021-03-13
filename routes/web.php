@@ -6,6 +6,7 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,11 +19,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
 
-Auth::routes();
+Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]], function()
+{
+    Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
 //Project Url
@@ -37,3 +39,5 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/newsletter/create',[NewsletterController::class, 'create'])->name('newsletter.create')->middleware('Admin');
     Route::post('/newsletter/send',[NewsletterController::class , 'sendNewsletter'])->name('newsletter.send')->middleware('Admin');
     Route::post('/newsletter/subscribe/', [NewsletterController::class,'subscribe'])->name('newsletter.subscribe');
+
+});

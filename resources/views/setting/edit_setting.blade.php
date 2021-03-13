@@ -6,31 +6,58 @@
         <div class="row justify-content-center">   
             <div class="col-sm-6 " >
                 <div class="head_title">
-                    <h3 class="text-center ">Site Setting</h3>
+                    <h3 class="text-center ">{{__('other.Site Setting')}}</h3>
                 </div>
                 <form action="{{route('setting.update')}}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="id" value="{{$setting->id ?? ''}}">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <h5>Title</h5>
-                                <input type="text" class="form-control " name="company_name" value="{{$setting->company_name ?? ''}}" placeholder="Company name" >
+                    <input type="hidden" name="id" value="{{$setting_edit->id ?? ''}}">
 
-                                @error('company_name')
+                    <div class="row">
+                         <div class="col-sm-6">
+                            <div class="form-group">
+                                <h5 class="text-center">{{__('other.Name En')}}</h5>
+                                <input type="text" class="form-control " name="company_name_en" value="{{$setting_edit->company_name_en ?? ''}}" placeholder="{{__('other.Company name en')}}" >
+
+                                @error('company_name_en')
                                     <span class="invalid-feedback" role="alert">
                                         <strong style="color: red">{{$message}}</strong>
                                     </span>
                                 @enderror
                             </div>
                         </div>
-
                         <div class="col-sm-6">
-                            <h5>Address</h5>
                             <div class="form-group">
-                                <input type="text" class="form-control " name="company_address" value="{{$setting->company_address ?? ''}}" placeholder="Company Address" >
+                                <h5 class="text-center">{{__('other.Name Ar')}}</h5>
+                                <input  type="text" class="form-control text-right" name="company_name_ar" value="{{$setting_edit->company_name_ar ?? ''}}" placeholder="{{__('other.Company name ar')}}" >
 
-                                @error('company_address')
+                                @error('company_name_ar')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong style="color: red">{{$message}}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h5 class="text-center">{{__('other.Address En')}}</h5>
+                            <div class="form-group">
+                                <input type="text" class="form-control " name="company_address_en" value="{{$setting_edit->company_address_en ?? ''}}" placeholder="{{__('other.Company Address en')}}" >
+
+                                @error('company_address_en')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong style="color: red">{{$message}}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <h5 class="text-center">{{__('other.Address Ar')}}</h5>
+                            <div class="form-group">
+                                <input type="text" class="form-control text-right" name="company_address_ar" value="{{$setting_edit->company_address_ar ?? ''}}" placeholder="{{__('other.Company Address ar')}}" >
+
+                                @error('company_address_ar')
                                     <span class="invalid-feedback" role="alert">
                                         <strong style="color: red">{{$message}}</strong>
                                     </span>
@@ -42,8 +69,8 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <h5>Phone</h5>
-                                <input type="text" class="form-control " name="phone" value="{{$setting->phone ?? ''}}" placeholder="Phone number" >
+                                <h5 class="text-center">{{__('other.Phone')}}</h5>
+                                <input type="text" class="form-control " name="phone" value="{{$setting_edit->phone ?? ''}}" placeholder="{{__('other.Phone number')}}" >
 
                                 @error('phone')
                                     <span class="invalid-feedback" role="alert">
@@ -54,9 +81,9 @@
                         </div>
 
                         <div class="col-sm-6">
-                            <h5>Email</h5>
+                            <h5 class="text-center">{{__('other.Email')}}</h5>
                             <div class="form-group">
-                                <input type="text" class="form-control " name="email" value="{{$setting->email ?? ''}}" placeholder="E-mail" >
+                                <input type="text" class="form-control " name="email" value="{{$setting_edit->email ?? ''}}" placeholder="{{__('other.E-mail')}}" >
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -67,22 +94,34 @@
                         </div>
                     </div>
 
+                    <div class="row">
+                        <div class="form-group">
+                            <h5 class="text-center">{{__('other.About us Ar')}}</h5>
+                            <textarea class="form-control text-right" name="about_us_ar" rows="8" placeholder="{{__('other.About Us in Arabic')}}">{{$setting_edit->about_us_ar ?? ''}}</textarea>
+                            @error('about_us_ar')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong style="color: red">{{$message}}</strong>
+                                </span>
+                            @enderror
+                        </div>
 
-                    <div class="form-group">
-                        <h5>About us</h5>
-                        <textarea class="form-control " name="about_us" rows="8" placeholder="About us">{{$setting->about_us ?? ''}}</textarea>
-                        @error('desc')
-                            <span class="invalid-feedback" role="alert">
-                                <strong style="color: red">{{$message}}</strong>
-                            </span>
-                        @enderror
+                        <div class="form-group">
+                            <h5 class="text-center">{{__('other.About us En')}}</h5>
+                            <textarea class="form-control " name="about_us_en" rows="8" placeholder="{{__('other.About Us in English')}}">{{$setting_edit->about_us_en ?? ''}}</textarea>
+                            @error('about_us_en')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong style="color: red">{{$message}}</strong>
+                                </span>
+                            @enderror
+                        </div>
                     </div>
+                    
 
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <h5>Facebook</h5>
-                                <input type="text" class="form-control " name="facebook" value="{{$setting->facebook ?? ''}}" placeholder="Facebook Link" >
+                                <h5>{{__('other.Facebook')}}</h5>
+                                <input type="text" class="form-control " name="facebook" value="{{$setting_edit->facebook ?? ''}}" placeholder="{{__('other.Facebook Link')}}" >
 
                                 @error('facebook')
                                     <span class="invalid-feedback" role="alert">
@@ -94,8 +133,8 @@
 
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <h5>Twitter</h5>
-                                <input type="text" class="form-control " name="twitter" value="{{$setting->twitter ?? ''}}" placeholder="Twitter Link" >
+                                <h5>{{__('other.Twitter')}}</h5>
+                                <input type="text" class="form-control " name="twitter" value="{{$setting_edit->twitter ?? ''}}" placeholder="{{__('other.Twitter Link')}}" >
 
                                 @error('twitter')
                                     <span class="invalid-feedback" role="alert">
@@ -107,8 +146,8 @@
 
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <h5>Linked In</h5>
-                                <input type="text" class="form-control " name="linked_in" value="{{$setting->linked_in ?? ''}}" placeholder="LinkedIn Link" >
+                                <h5>{{__('other.Linked In')}}</h5>
+                                <input type="text" class="form-control " name="linked_in" value="{{$setting_edit->linked_in ?? ''}}" placeholder="{{__('other.LinkedIn Link')}}" >
 
                                 @error('linked_in')
                                     <span class="invalid-feedback" role="alert">
@@ -121,7 +160,7 @@
 
 
                     <div class="">
-                        <input type="submit" value="Submit" class="btn btn-primary">
+                        <input type="submit" value="{{__('other.Submit')}}" class="btn btn-primary">
                     </div>
                 </form>
             </div>

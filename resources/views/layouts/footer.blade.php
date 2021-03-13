@@ -1,10 +1,13 @@
 
+@php
+    $Direction = LaravelLocalization::getCurrentLocaleDirection();
+@endphp
     <!--Call to  action section-->
     <section id="action" class="action bg-primary roomy-40">
         <div class="container">
             <div class="row">
                 <div class="maine_action">
-                    <div class="col-md-8">
+                    <div class="col-md-8" style="{{$Direction == 'rtl' ? 'float: right;' : ''}}">
                         <div class="action_item text-center">
                             <h2 class="text-white text-uppercase">Your Promotion Text Will Be Here</h2>
                         </div>
@@ -20,88 +23,54 @@
     </section>
     
 
-<footer id="contact" class="footer action-lage bg-black p-top-80">
+<footer id="contact" class="footer action-lage bg-black p-top-80" >
     <!--<div class="action-lage"></div>-->
     <div class="container">
         <div class="row">
             <div class="widget_area">
-                <div class="col-md-3">
+                <div class="col-md-3" style="{{$Direction == 'rtl' ? 'float: right;' : ''}}">
                     <div class="widget_item widget_about">
-                        <h5 class="text-white">About Us</h5>
-                        <p class="m-top-20">{{Illuminate\Support\str::limit($setting->about_us ?? '',100,'...') }}<a href="#about_us" >more</a></p>
+        
                         <div class="widget_ab_item m-top-30">
-                            <div class="item_icon"><i class="fa fa-location-arrow"></i></div>
+                            <div class="item_icon" style="{{$Direction == 'rtl' ? 'float: right;' : ''}}"><i class="fa fa-location-arrow"></i></div>
                             <div class="widget_ab_item_text">
-                                <h6 class="text-white">Location</h6>
+                                <h6 class="text-white">{{__('footer.Location')}}</h6>
                                 <p>{{$setting->company_address ?? ''}}</p>
                             </div>
                         </div>
                         <div class="widget_ab_item m-top-30">
-                            <div class="item_icon"><i class="fa fa-phone"></i></div>
+                            <div class="item_icon" style="{{$Direction == 'rtl' ? 'float: right;' : ''}}"><i class="fa fa-phone"></i></div>
                             <div class="widget_ab_item_text">
-                                <h6 class="text-white">Phone :</h6>
+                                <h6 class="text-white">{{__('footer.Phone')}} :</h6>
                                 <p>{{($setting->phone ?? '')}}</p>
                             </div>
                         </div>
                         <div class="widget_ab_item m-top-30">
-                            <div class="item_icon"><i class="fa fa-envelope-o"></i></div>
+                            <div class="item_icon" style="{{$Direction == 'rtl' ? 'float: right;' : ''}}"><i class="fa fa-envelope-o"></i></div>
                             <div class="widget_ab_item_text">
-                                <h6 class="text-white">Email Address :</h6>
+                                <h6 class="text-white">{{__('footer.Email Address')}} :</h6>
                                 <p>{{$setting->email ?? ''}}</p>
                             </div>
                         </div>
                     </div><!-- End off widget item -->
                 </div><!-- End off col-md-3 -->
+        
+                    <div class="col-md-5">
+                        <h5 class="text-white">{{__('footer.About Us')}}</h5>
+                        <p class="m-top-20">{{$setting->about_us ?? '' }}</p>
 
-                <div class="col-md-3">
-                    <div class="widget_item widget_latest sm-m-top-50">
-                        <h5 class="text-white">Latest News</h5>
-                        <div class="widget_latst_item m-top-30">
-                            <div class="item_icon"><img src="{{asset('assets/images/ltst-img-1.jpg')}}" alt="" /></div>
-                            <div class="widget_latst_item_text">
-                                <p>Lorem ipsum dolor sit amet, consectetur</p>
-                                <a href="">21<sup>th</sup> July 2016</a>
-                            </div>
-                        </div>
-                        <div class="widget_latst_item m-top-30">
-                            <div class="item_icon"><img src="{{asset('assets/images/ltst-img-2.jpg')}}" alt="" /></div>
-                            <div class="widget_latst_item_text">
-                                <p>Lorem ipsum dolor sit amet, consectetur</p>
-                                <a href="">21<sup>th</sup> July 2016</a>
-                            </div>
-                        </div>
-                        <div class="widget_latst_item m-top-30">
-                            <div class="item_icon"><img src="{{asset('assets/images/ltst-img-3.jpg')}}" alt="" /></div>
-                            <div class="widget_latst_item_text">
-                                <p>Lorem ipsum dolor sit amet, consectetur</p>
-                                <a href="">21<sup>th</sup> July 2016</a>
-                            </div>
-                        </div>
-                    </div><!-- End off widget item -->
-                </div><!-- End off col-md-3 -->
+                    </div>
 
-                <div class="col-md-3">
-                    <div class="widget_item widget_service sm-m-top-50">
-                        <h5 class="text-white">Latest News</h5>
-                        <ul class="m-top-20">
-                            <li class="m-top-20"><a href=""><i class="fa fa-angle-right"></i> Web Design</a></li>
-                            <li class="m-top-20"><a href=""><i class="fa fa-angle-right"></i> User Interface Design</a></li>
-                            <li class="m-top-20"><a href=""><i class="fa fa-angle-right"></i> E- Commerce</a></li>
-                            <li class="m-top-20"><a href=""><i class="fa fa-angle-right"></i> Web Hosting</a></li>
-                            <li class="m-top-20"><a href=""><i class="fa fa-angle-right"></i> Themes</a></li>
-                            <li class="m-top-20"><a href=""><i class="fa fa-angle-right"></i> Support Forums</a></li>
-                        </ul>
-                    </div><!-- End off widget item -->
-                </div><!-- End off col-md-3 -->
+       
 
-                <div class="col-md-3">
+                <div class="col-md-3" style="{{$Direction == 'ltr' ? 'float: right;' : ''}}">
                     <div class="widget_item widget_newsletter sm-m-top-50">
-                        <h5 class="text-white">Newsletter</h5>
+                        <h5 class="text-white">{{__('footer.Newsletter')}}</h5>
                         <div class="form-inline m-top-30">
                             <div class="form-group">
                                 <form action="{{route('newsletter.subscribe')}}" method="POST" >
                                     @csrf
-                                    <input type="email" name="email" class="form-control" placeholder="Enter you Email">
+                                    <input type="email" name="email" class="form-control" placeholder="{{__('footer.Enter you Email')}}">
                                     <button type="submit" class="btn text-center"><i class="fa fa-arrow-right"></i></button>
                                 </form>
                                 @error('email')

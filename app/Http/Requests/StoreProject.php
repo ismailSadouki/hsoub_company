@@ -24,9 +24,11 @@ class StoreProject extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
+            'title_en' => 'required',
+            'title_ar' => 'required',
             'link' => 'nullable|active_url',
-            'desc' => 'required',
+            'desc_ar' => 'required',
+            'desc_en' => 'required',
             'image' => 'image',
         ];
     }

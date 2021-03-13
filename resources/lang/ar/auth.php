@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Authentication Language Lines
@@ -13,11 +12,11 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
-    'password' => 'The provided password is incorrect.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-    'Register' => 'Register',
-    'Login' => 'Login',
-    'Logout' => 'Logout',
+    'failed'   => 'بيانات الاعتماد هذه غير متطابقة مع البيانات المسجلة لدينا.',
+    'password' => 'كلمة المرور المستخدمة غير صحيحة.',
+    'throttle' => 'عدد كبير جدا من محاولات الدخول. يرجى المحاولة مرة أخرى بعد :seconds ثانية.',
 
+    'Register' => 'تسجيل جديد',
+    'Login' => 'تسجيل دخول',
+    'Logout' => 'خروج',
 ];

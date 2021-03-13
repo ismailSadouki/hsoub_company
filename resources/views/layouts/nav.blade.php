@@ -1,12 +1,13 @@
-<nav class="navbar navbar-default bootsnav navbar-fixed">
+
+<nav class="navbar navbar-default bootsnav navbar-fixed" dir="{{LaravelLocalization::getCurrentLocaleDirection()}}">
     <div class="navbar-top bg-grey fix">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
                     <div class="navbar-callus text-left sm-text-center">
                         <ul class="list-inline">
-                            <li><a href=""><i class="fa fa-phone"></i> Call us: {{$setting->phone ?? ''}}</a></li>
-                            <li><a href=""><i class="fa fa-envelope-o"></i> Contact us: {{$setting->email ?? ''}}</a></li>
+                            <li><a href=""><i class="fa fa-phone"></i> {{__('nav.Call us')}}: {{$setting->phone ?? ''}}</a></li>
+                            <li><a href=""><i class="fa fa-envelope-o"></i> {{__('nav.Contact us')}}: {{$setting->email ?? ''}}</a></li>
                         </ul>
                     </div>
                 </div>
@@ -25,7 +26,7 @@
 
   
 
-    <div class="container"> 
+    <div class="container" "> 
         <div class="attr-nav">
             <ul>
                 <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
@@ -33,7 +34,7 @@
         </div> 
 
         <!-- Start Header Navigation -->
-        <div class="navbar-header">
+        <div class="navbar-header " >
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
                 <i class="fa fa-bars"></i>
             </button>
@@ -49,37 +50,46 @@
             @include('alerts.success')
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="{{route('home')}}">Home</a></li>  
-                @Auth
-                @admin
+                <!-- Arabic && English -->
+                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                     <li>
-                        <a href="{{route('project.create')}}">New Project</a>
-                    </li>  
-                    <li>
-                        <a href="{{route('newsletter.create')}}">Newsletter</a>
-                    </li>  
-                    <li>
-                        <a href="{{route('setting.edit')}}">Setting</a>
-                    </li>  
-                @endadmin    
-                    <li>
-                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); 
-                                                        document.getElementById('logout-form').submit();">
-                            logout
+                        <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                            {{ $properties['native'] }}
                         </a>
                     </li>
+                @endforeach
+                
+                <li><a href="{{route('home')}}">| {{__('nav.Home')}}</a></li>  
+                @Auth
+                    @admin
+                        <li>
+                            <a href="{{route('project.create')}}">{{__('nav.New Project')}}</a>
+                        </li>  
+                        <li>
+                            <a href="{{route('newsletter.create')}}">{{__('nav.Newsletter')}}</a>
+                        </li>  
+                        <li>
+                            <a href="{{route('setting.edit')}}">{{__('nav.Setting')}}</a>
+                        </li>  
+                    @endadmin    
+                        <li>
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); 
+                                                            document.getElementById('logout-form').submit();">
+                                {{__('auth.Logout')}}
+                            </a>
+                        </li>
 
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                                         
                 @else 
-                    <li>
-                        <a href="{{ route('register') }}">Register</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('login') }}">Login</a>
-                    </li>
+                        <li>
+                            <a href="{{ route('register') }}">{{__('auth.Register')}}</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('login') }}">{{__('auth.Login')}}</a>
+                        </li>
                 @endauth                 
               
             </ul>

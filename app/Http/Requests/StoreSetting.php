@@ -24,11 +24,14 @@ class StoreSetting extends FormRequest
     public function rules()
     {
         return [
-            'company_name' => 'required|max:150',
-            'company_address' => 'required',
+            'company_name_ar' => 'required|max:150',
+            'company_name_en' => 'required|max:150',
+            'company_address_ar' => 'required',
+            'company_address_en' => 'required',
             'phone' => 'numeric',
             'email' => 'required|string|email',
-            'about_us' => 'required',
+            'about_us_ar' => 'required',
+            'about_us_en' => 'required',
             'facebook' => 'required|active_url',
             'twitter' => 'required|active_url',
             'linked_in' => 'required|active_url',

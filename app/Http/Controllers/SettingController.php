@@ -15,7 +15,8 @@ class SettingController extends Controller
 
     public function edit()
     {
-        return view('setting.edit_setting');
+        $setting_edit = Setting::first();
+        return view('setting.edit_setting',compact('setting_edit'));
     }
 
     public function update(StoreSetting $request)
@@ -25,17 +26,20 @@ class SettingController extends Controller
         }else {
             $setting = new Setting;
         }
-        $setting->company_name = $request->company_name;
-        $setting->company_address = $request->company_address;
+        $setting->company_name_ar = $request->company_name_ar;
+        $setting->company_name_en = $request->company_name_en;
+        $setting->company_address_ar = $request->company_address_ar;
+        $setting->company_address_en = $request->company_address_en;
         $setting->phone = $request->phone;
         $setting->email = $request->email;
-        $setting->about_us = $request->about_us;
+        $setting->about_us_ar = $request->about_us_ar;
+        $setting->about_us_en = $request->about_us_en;
         $setting->facebook = $request->facebook;
         $setting->twitter = $request->twitter;
         $setting->linked_in = $request->linked_in;
 
         $setting->save();
         
-        return back()->with('success','Site Setting Updated Successfully');
+        return back()->with('success',__('messages.Site Setting Updated Successfully'));
     }
 }

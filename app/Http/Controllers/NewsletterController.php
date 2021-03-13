@@ -23,7 +23,7 @@ class NewsletterController extends Controller
         $data->email = $request->email;
         $data->save();
 
-        return back()->with('success','Thank you for subscribing');
+        return back()->with('success',__('messages.Thank you for subscribing'));
     }
 
 
@@ -36,6 +36,6 @@ class NewsletterController extends Controller
             NewsletterJob::dispatch($emails,$request->all());
         });
         
-        return back()->with('success','will send in back ground');
+        return back()->with('success',__('messages.will send in back ground'));
     }
 }

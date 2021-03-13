@@ -6,6 +6,7 @@ use App\Models\Project;
 use App\Models\Setting;
 use Database\Seeders\ProjectSeeder;
 use Illuminate\Http\Request;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization ;
 
 class HomeController extends Controller
 {
@@ -26,9 +27,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $projects = Project::latest()->paginate(8);
-        // $setting = Setting::first();
+        $lang = LaravelLocalization::getCurrentLocale();
+        $projects = Project::select(
 
+                 'id',
+                 'title_'.$lang.' as title',
+                 'desc_'.$lang.' as desc',   
+                 'image',
+                 'link'
+
+            )->latest()->paginate(8);
+            
         return view('home',compact('projects'));
+
     }
 }

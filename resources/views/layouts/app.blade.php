@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="en"> 
+<html class="no-js" lang="{{LaravelLocalization::getCurrentLocale()}}" dir="{{LaravelLocalization::getCurrentLocaleDirection()}}"> 
     <head>
         <meta charset="utf-8">
         <title>{{$setting->company_name ?? 'home'}}</title>
@@ -45,11 +45,11 @@
         </style>
     </head>
 
-    <body data-spy="scroll" data-target=".navbar-collapse">
+    <body data-spy="scroll" data-target=".navbar-collapse" dir="{{LaravelLocalization::getCurrentLocaleDirection()}}">
 
 
         <!-- Preloader -->
-        <div id="loading">
+        <div id="loading" >
             <div id="loading-center">
                 <div id="loading-center-absolute">
                     <div class="object" id="object_one"></div>
