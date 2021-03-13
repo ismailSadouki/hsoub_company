@@ -3,6 +3,7 @@
 return [
 
     //english
+    'Email' => 'Email',
     'Newsletter' => 'Newsletter',
     'title' => 'title',
     'Title' => 'Title',
@@ -38,5 +39,6 @@ return [
     'About us En' => 'About us En',
     'Facebook' => 'Facebook',
     'Twitter' => 'Twitter',
+    'Delete' => 'Delete',
     'Linked In' => 'Linked In',
 ];

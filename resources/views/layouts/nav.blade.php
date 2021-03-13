@@ -6,8 +6,8 @@
                 <div class="col-md-6">
                     <div class="navbar-callus text-left sm-text-center">
                         <ul class="list-inline">
-                            <li><a href=""><i class="fa fa-phone"></i> {{__('nav.Call us')}}: {{$setting->phone ?? ''}}</a></li>
-                            <li><a href=""><i class="fa fa-envelope-o"></i> {{__('nav.Contact us')}}: {{$setting->email ?? ''}}</a></li>
+                            <li><a href=""><i class="fa fa-phone"></i> {{__('nav.Call us')}}: {{$setting->phone ?? '...'}}</a></li>
+                            <li><a href=""><i class="fa fa-envelope-o"></i> {{__('nav.Contact us')}}: {{$setting->email ?? '...'}}</a></li>
                         </ul>
                     </div>
                 </div>
@@ -46,8 +46,9 @@
         <!-- End Header Navigation -->
         <!-- navbar menu -->
         <div class="collapse navbar-collapse" id="navbar-menu">
-
-            @include('alerts.success')
+            <div dir="ltr">
+                @include('alerts.success')
+            </div>
 
             <ul class="nav navbar-nav navbar-right">
                 <!-- Arabic && English -->

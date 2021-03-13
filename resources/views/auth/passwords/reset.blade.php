@@ -1,23 +1,27 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+@php
+    $Direction = LaravelLocalization::getCurrentLocaleDirection();
+@endphp
+<section  id="home" class="home bg-black" style="background-image: none; transform:translateX(18%)" >
+    <div class="container">
+        <div class="row justify-content-center"> 
+            <div class="col-md-8" >
+                
+                <div class="head_title">
+                    <h3 class="text-center">{{ __('auth.Reset Password') }}</h3>
+                </div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('password.update') }}">
+                    <form method="POST" action="{{ route('password.update') }}" style="transform: translateX(24%)">
                         @csrf
 
                         <input type="hidden" name="token" value="{{ $token }}">
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
+                                <input id="email" placeholder="{{ __('auth.E-Mail Address') }}" type="email" class="form-control @error('email') is-invalid @enderror" style="text-align:{{$Direction == 'ltr' ? 'left' : ''}};" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -28,10 +32,9 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="password" type="password" placeholder="{{ __('auth.Password') }}" class="form-control @error('password') is-invalid @enderror" name="password" style="text-align:{{$Direction == 'ltr' ? 'left' : ''}};" required autocomplete="new-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -42,24 +45,22 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="{{ __('auth.Confirm Password') }}" style="text-align:{{$Direction == 'ltr' ? 'left' : ''}};">
                             </div>
                         </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Reset Password') }}
+                                    {{ __('auth.Reset Password') }}
                                 </button>
                             </div>
                         </div>
                     </form>
                 </div>
-            </div>
         </div>
     </div>
-</div>
+</section>    
 @endsection

@@ -19,4 +19,13 @@ return [
     'Register' => 'تسجيل جديد',
     'Login' => 'تسجيل دخول',
     'Logout' => 'خروج',
+    'E-Mail Address' => 'البريد الالكتروني',
+    'Password' => 'كلمة السر',
+    'Remember Me' => 'تذكرني',
+    'Forgot Your Password?' => 'هل نسيت كلمة السر؟',
+    'Register' => 'تسجيل جديد',
+    'Name' => 'الاسم',
+    'Confirm Password' => 'تأكيد كلة السر',
+    'Send Password Reset Link' => 'ارسال رابط اعادة تعيين كلمة السر',
+    'Reset Password' => 'اعادة تعيين كلمة السر',
 ];

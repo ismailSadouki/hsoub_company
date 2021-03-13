@@ -26,7 +26,7 @@ class StoreProject extends FormRequest
         return [
             'title_en' => 'required',
             'title_ar' => 'required',
-            'link' => 'nullable|active_url',
+            'link' => 'required|active_url',
             'desc_ar' => 'required',
             'desc_en' => 'required',
             'image' => 'image',

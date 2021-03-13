@@ -42,6 +42,15 @@
             .modal {
                 position: fixed;
             }
+            .modal-content{
+                top:-500px;
+            }
+            .modal-backdrop.in{
+                position: revert;
+            }
+            .btn:hover, .btn:focus, .btn.focus {
+                color: green;
+            }
         </style>
     </head>
 

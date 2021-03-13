@@ -4,22 +4,7 @@
 @endphp
     <!--Call to  action section-->
     <section id="action" class="action bg-primary roomy-40">
-        <div class="container">
-            <div class="row">
-                <div class="maine_action">
-                    <div class="col-md-8" style="{{$Direction == 'rtl' ? 'float: right;' : ''}}">
-                        <div class="action_item text-center">
-                            <h2 class="text-white text-uppercase">Your Promotion Text Will Be Here</h2>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="action_btn text-left sm-text-center">
-                            <a href="" class="btn btn-default">Purchase Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
     </section>
     
 
@@ -35,21 +20,21 @@
                             <div class="item_icon" style="{{$Direction == 'rtl' ? 'float: right;' : ''}}"><i class="fa fa-location-arrow"></i></div>
                             <div class="widget_ab_item_text">
                                 <h6 class="text-white">{{__('footer.Location')}}</h6>
-                                <p>{{$setting->company_address ?? ''}}</p>
+                                <p>{{$setting->company_address ?? '...'}}</p>
                             </div>
                         </div>
                         <div class="widget_ab_item m-top-30">
                             <div class="item_icon" style="{{$Direction == 'rtl' ? 'float: right;' : ''}}"><i class="fa fa-phone"></i></div>
                             <div class="widget_ab_item_text">
                                 <h6 class="text-white">{{__('footer.Phone')}} :</h6>
-                                <p>{{($setting->phone ?? '')}}</p>
+                                <p>{{($setting->phone ?? '...')}}</p>
                             </div>
                         </div>
                         <div class="widget_ab_item m-top-30">
                             <div class="item_icon" style="{{$Direction == 'rtl' ? 'float: right;' : ''}}"><i class="fa fa-envelope-o"></i></div>
                             <div class="widget_ab_item_text">
                                 <h6 class="text-white">{{__('footer.Email Address')}} :</h6>
-                                <p>{{$setting->email ?? ''}}</p>
+                                <p>{{$setting->email ?? '...'}}</p>
                             </div>
                         </div>
                     </div><!-- End off widget item -->
@@ -57,7 +42,7 @@
         
                     <div class="col-md-5">
                         <h5 class="text-white">{{__('footer.About Us')}}</h5>
-                        <p class="m-top-20">{{$setting->about_us ?? '' }}</p>
+                        <p class="m-top-20">{{$setting->about_us ?? '...' }}</p>
 
                     </div>
 

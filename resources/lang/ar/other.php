@@ -42,4 +42,5 @@ return [
     'Linked In' => 'لينكد ان',
     'Delete' => 'حذف',
     
+    
 ];

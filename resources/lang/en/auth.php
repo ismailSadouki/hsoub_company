@@ -19,5 +19,13 @@ return [
     'Register' => 'Register',
     'Login' => 'Login',
     'Logout' => 'Logout',
-
+    'E-Mail Address' => 'E-Mail Address',
+    'Password' => 'Password',
+    'Remember Me' => 'Remember Me',
+    'Forgot Your Password?' => 'Forgot Your Password?',
+    'Register' => 'Register',
+    'Name' => 'Name',
+    'Confirm Password' => 'Confirm Password',
+    'Send Password Reset Link' => 'Send Password Reset Link',
+    'Reset Password' => 'Reset Password',
 ];

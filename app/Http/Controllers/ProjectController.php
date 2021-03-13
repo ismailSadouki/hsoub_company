@@ -66,7 +66,6 @@ class ProjectController extends Controller
         $project = Project::where('id',$id)->select(
 
             'id',
-            'title_'.$lang.' as title',
             'desc_'.$lang.' as desc',   
             'image',
             'link'

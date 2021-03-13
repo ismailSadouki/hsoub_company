@@ -63,7 +63,7 @@
         <div class="form-group">
             <input accept="image/*" id="image_file" type="file" class="form-control" name="image"  placeholder="{{__('other.Image')}}" {{isset($project) ? '' : 'required=""'}} >
             <br>
-            <img src="{{isset($project) ? asset('storage/'.$project->image) : ''}}"  id="image" alt="" style="transform: translateX(50%)">
+            <img src="{{isset($project) ? asset('storage/'.$project->image) : ''}}"  id="image" alt="" style="transform: translateX({{LaravelLocalization::getCurrentLocaleDirection() == 'ltr' ? '50%' : '-50%'}})">
  
              
             @error('image')
