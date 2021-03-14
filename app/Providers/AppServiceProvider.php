@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer(
-            ['layouts.app','setting.edit_setting','home.index'], 'App\Http\ViewComposers\SettingComposer'
+            ['layouts.app','home.index'], 'App\Http\ViewComposers\SettingComposer'
         );
         
         \Blade::if('admin',function(){
