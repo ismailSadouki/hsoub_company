@@ -42,4 +42,5 @@ return [
     'Delete' => 'Delete',
     'Linked In' => 'Linked In',
     'Profile' => 'Profile',
+    'Create' => 'Create'
 ];

@@ -48,28 +48,33 @@
 
        
 
-                <div class="col-md-3" style="{{$direction == 'ltr' ? 'float: right;' : ''}}">
+                <div class="col-md-3" style="{{$direction == 'ltr' ? 'float: right;' : ''}}" >
                     <div class="widget_item widget_newsletter sm-m-top-50">
                         <h5 class="text-white">{{__('footer.Newsletter')}}</h5>
-                        <div class="form-inline m-top-30">
+                        <div class="form-inline m-top-30" >
                             <div class="form-group">
-                                <form action="{{route('newsletter.subscribe')}}" method="POST" >
-                                    @csrf
-                                    <input type="email" name="email" class="form-control" placeholder="{{__('footer.Enter you Email')}}">
-                                    <button type="submit" class="btn text-center"><i class="fa fa-arrow-right"></i></button>
-                                </form>
                                 @error('email')
-                                    <span style="color:red">{{$message}}</span>
-                                @enderror
+                                    <span style="color:red" >{{$message}}</span>
+                                @enderror 
+                                
+                                <form action="{{route('newsletter.subscribe')}}" method="POST" class="{!! $errors->first('email', ' focus_newsletter ') !!}" >
+                                    @csrf
+                                    <input type="email"  name="email"class="form-control " placeholder="{{__('footer.Enter you Email')}}" >
+                                    
+
+                                    <button   type="submit" class="btn text-center"  {!! $errors->first('email', ' autofocus ') !!}><i class="fa fa-arrow-right"></i></button>
+                                </form >
+                                
                             </div>
 
                         </div>
                         <div class="widget_brand m-top-40">
-                            <a href="" class="text-uppercase"><img src="{{asset('storage/images/logo.png')}}" alt=""></a>
+                            <a href="" class="text-uppercase"><img  src="{{asset('storage/images/logo.png')}}" alt=""></a>
                             
+                          
                         </div>
-                        <ul class="list-inline m-top-20">
-                            <li>-  <a href="{{$setting->facebook ?? ''}}"><i class="fa fa-facebook"></i></a></li>
+                        <ul class="list-inline m-top-20" >
+                            <li >-  <a href="{{$setting->facebook ?? ''}}"><i class="fa fa-facebook"></i></a></li>
                             <li><a href="{{$setting->twitter ?? ''}}"><i class="fa fa-twitter"></i></a></li>
                             <li><a href="{{$setting->linked_in ?? ''}}"><i class="fa fa-linkedin"></i></a> -</li>
             
@@ -81,12 +86,12 @@
         </div>
     </div>
     <div class="main_footer fix bg-mega text-center p-top-40 p-bottom-30 m-top-80">
-        <div class="col-md-12">
-            <p class="wow fadeInRight" data-wow-duration="1s">
+        <div class="col-md-12" >
+            <p class="wow fadeInRight" data-wow-duration="1s" >
                 Made with 
-                <i class="fa fa-heart"></i>
+                <i class="fa fa-heart" ></i>
                 by 
-                <a target="_blank" href="http://bootstrapthemes.co">Bootstrap Themes</a> 
+                <a target="_blank"  href="http://bootstrapthemes.co">Bootstrap Themes</a> 
                 2016. All Rights Reserved
             </p>
         </div>

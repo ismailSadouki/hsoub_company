@@ -12,7 +12,7 @@
                 <form action="{{route('project.store')}}" method="POST" enctype="multipart/form-data">
                     @include('project.form')
                     <div class="">
-                        <input type="submit" value="{{__('other.Submit')}}" class="btn btn-primary">
+                        <input type="submit" value="{{__('other.Create')}}" class="btn btn-primary">
                     </div>
                 </form>
 

@@ -2,16 +2,15 @@
 
 namespace App\Jobs;
 
-use App\Mail\NewsletterMail;
+use App\Models\Newsletter;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\Mail;
 
-class NewsletterJob implements ShouldQueue
+class GetEmailsJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -20,12 +19,9 @@ class NewsletterJob implements ShouldQueue
      *
      * @return void
      */
-
-    public $emails;
     public $request;
-    public function __construct($emails,$request)
-    {    
-        $this->emails = $emails;
+    public function __construct($request)
+    {
         $this->request = $request;
     }
 
@@ -36,10 +32,9 @@ class NewsletterJob implements ShouldQueue
      */
     public function handle()
     {
-         
-        foreach($this->emails as $email){
-            $request=$this->request;
-            Mail::to($email->email)->send(new NewsletterMail($request));
-        }
+        Newsletter::chunk(25,function($emails){
+            $request = $this->request;
+            SendEmailsJob::dispatch($emails,$request);
+        });
     }
 }

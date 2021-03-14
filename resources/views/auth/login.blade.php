@@ -2,7 +2,7 @@
 
 @section('content')
 @php
-    $Direction = LaravelLocalization::getCurrentLocaleDirection();
+    $direction = LaravelLocalization::getCurrentLocaleDirection();
 @endphp
 <section  id="home" class="home bg-black" style="background-image: none; transform:translateX(18%)" >
     <div class="container">
@@ -20,7 +20,7 @@
                         <div class="form-group row">
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="{{ __('auth.E-Mail Address') }}" required autocomplete="email" autofocus style="text-align:{{$Direction == 'ltr' ? 'left' : ''}};" name="name" value="{{ old('name') }}" required >
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="{{ __('auth.E-Mail Address') }}" required autocomplete="email" autofocus style="text-align:{{$direction == 'ltr' ? 'left' : ''}};" name="name" value="{{ old('name') }}" required >
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -33,7 +33,7 @@
                         <div class="form-group row">
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" style="text-align:{{$Direction == 'ltr' ? 'left' : ''}};" placeholder="{{ __('auth.Password') }}">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" style="text-align:{{$direction == 'ltr' ? 'left' : ''}};" placeholder="{{ __('auth.Password') }}">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -55,7 +55,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
+                        <div class="form-group row mb-0" style="transform: {{$direction == 'rtl' ? 'translateX(-16%)' : ''}}">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary " >
                                     {{ __('auth.Login') }}

@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SendNewsletter;
 use App\Http\Requests\SubscribeNewsletter;
+use App\Jobs\GetEmailsJob;
 use App\Jobs\NewsletterJob;
+use App\Jobs\SendMailsJob;
 use App\Models\Newsletter;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class NewsletterController extends Controller
 {
@@ -30,11 +33,14 @@ class NewsletterController extends Controller
     public function sendNewsletter(SendNewsletter $request)
     {
 
-        global $request;
-        Newsletter::chunk(25,function($emails){
-            global $request;
-            NewsletterJob::dispatch($emails,$request->all());
-        });
+        // global $request;
+        // Newsletter::chunk(25,function($emails){
+        //     global $request;
+        //     SendMailsJob::dispatch($emails,$request->all());
+        // });
+
+        $request = $request->all();
+        GetEmailsJob::dispatch($request);
         
         return back()->with('success',__('messages.will send in back ground'));
     }

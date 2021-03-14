@@ -51,13 +51,22 @@
             .btn:hover, .btn:focus, .btn.focus {
                 color: green;
             }
+            .focus_newsletter{
+                border-color: rgba(236, 87, 82, 0.8);
+                outline: 0;
+                outline: thin dotted \9;
+                -moz-box-shadow: 0 0 20px rgba(236, 82, 90, 0.6);
+                box-shadow: 0 0 20px rgba(236, 82, 95, 0.6) !important;
+                margin-block: 20px;
+                
+            }
         </style>
     </head>
 
     <body data-spy="scroll" data-target=".navbar-collapse" dir="{{LaravelLocalization::getCurrentLocaleDirection()}}">
 
 
-        <!-- Preloader -->
+        {{-- <!-- Preloader -->
         <div id="loading" >
             <div id="loading-center">
                 <div id="loading-center-absolute">
@@ -67,7 +76,7 @@
                     <div class="object" id="object_four"></div>
                 </div>
             </div>
-        </div><!--End off Preloader -->
+        </div><!--End off Preloader --> --}}
 
 
         <div class="culmn">

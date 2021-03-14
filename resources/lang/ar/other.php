@@ -42,7 +42,7 @@ return [
     'Linked In' => 'لينكد ان',
     'Delete' => 'حذف',
     'Profile' => 'الصفحة الشخصية',
-    
+    'Create' => 'انشاء',
     
     
 ];
