@@ -2,7 +2,7 @@
 
 return [
 
-
+    'Updated Successfully' => 'Updated Successfully',
     'Thank you for subscribing' => 'Thank you for subscribing',
     'will send in back ground' => 'will send in back ground',
     'Site Setting Updated Successfully' => 'Site Setting Updated Successfully',

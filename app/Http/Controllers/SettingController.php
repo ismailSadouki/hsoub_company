@@ -21,24 +21,28 @@ class SettingController extends Controller
 
     public function update(StoreSetting $request)
     {
+        
+        $data = [
+            'company_name_ar' => $request->company_name_ar,
+            'company_name_en' => $request->company_name_en,
+            'company_address_ar' => $request->company_address_ar,
+            'company_address_en' => $request->company_address_en,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'about_us_ar' => $request->about_us_ar,
+            'about_us_en' => $request->about_us_en,
+            'facebook' => $request->facebook,
+            'twitter' => $request->twitter,
+            'linked_in' => $request->linked_in,
+        ];
         if(isset($request->id)){
             $setting = Setting::first();
+            $setting->update($data);
         }else {
-            $setting = new Setting;
+            Setting::create($data);
         }
-        $setting->company_name_ar = $request->company_name_ar;
-        $setting->company_name_en = $request->company_name_en;
-        $setting->company_address_ar = $request->company_address_ar;
-        $setting->company_address_en = $request->company_address_en;
-        $setting->phone = $request->phone;
-        $setting->email = $request->email;
-        $setting->about_us_ar = $request->about_us_ar;
-        $setting->about_us_en = $request->about_us_en;
-        $setting->facebook = $request->facebook;
-        $setting->twitter = $request->twitter;
-        $setting->linked_in = $request->linked_in;
 
-        $setting->save();
+        
         
         return back()->with('success',__('messages.Site Setting Updated Successfully'));
     }

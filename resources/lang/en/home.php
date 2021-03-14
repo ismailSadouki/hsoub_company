@@ -13,4 +13,5 @@ return [
     'Cancel' => 'Cancel',
     'Show' => 'Show',
     'Delete' => 'Delete',
+    'Edit' => 'Edit'
 ];

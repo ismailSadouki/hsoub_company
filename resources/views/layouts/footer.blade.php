@@ -1,6 +1,6 @@
 
 @php
-    $Direction = LaravelLocalization::getCurrentLocaleDirection();
+    $direction = LaravelLocalization::getCurrentLocaleDirection();
 @endphp
     <!--Call to  action section-->
     <section id="action" class="action bg-primary roomy-40">
@@ -13,25 +13,25 @@
     <div class="container">
         <div class="row">
             <div class="widget_area">
-                <div class="col-md-3" style="{{$Direction == 'rtl' ? 'float: right;' : ''}}">
+                <div class="col-md-3" style="{{$direction == 'rtl' ? 'float: right;' : ''}}">
                     <div class="widget_item widget_about">
         
                         <div class="widget_ab_item m-top-30">
-                            <div class="item_icon" style="{{$Direction == 'rtl' ? 'float: right;' : ''}}"><i class="fa fa-location-arrow"></i></div>
+                            <div class="item_icon" style="{{$direction == 'rtl' ? 'float: right;' : ''}}"><i class="fa fa-location-arrow"></i></div>
                             <div class="widget_ab_item_text">
                                 <h6 class="text-white">{{__('footer.Location')}}</h6>
                                 <p>{{$setting->company_address ?? '...'}}</p>
                             </div>
                         </div>
                         <div class="widget_ab_item m-top-30">
-                            <div class="item_icon" style="{{$Direction == 'rtl' ? 'float: right;' : ''}}"><i class="fa fa-phone"></i></div>
+                            <div class="item_icon" style="{{$direction == 'rtl' ? 'float: right;' : ''}}"><i class="fa fa-phone"></i></div>
                             <div class="widget_ab_item_text">
                                 <h6 class="text-white">{{__('footer.Phone')}} :</h6>
                                 <p>{{($setting->phone ?? '...')}}</p>
                             </div>
                         </div>
                         <div class="widget_ab_item m-top-30">
-                            <div class="item_icon" style="{{$Direction == 'rtl' ? 'float: right;' : ''}}"><i class="fa fa-envelope-o"></i></div>
+                            <div class="item_icon" style="{{$direction == 'rtl' ? 'float: right;' : ''}}"><i class="fa fa-envelope-o"></i></div>
                             <div class="widget_ab_item_text">
                                 <h6 class="text-white">{{__('footer.Email Address')}} :</h6>
                                 <p>{{$setting->email ?? '...'}}</p>
@@ -48,7 +48,7 @@
 
        
 
-                <div class="col-md-3" style="{{$Direction == 'ltr' ? 'float: right;' : ''}}">
+                <div class="col-md-3" style="{{$direction == 'ltr' ? 'float: right;' : ''}}">
                     <div class="widget_item widget_newsletter sm-m-top-50">
                         <h5 class="text-white">{{__('footer.Newsletter')}}</h5>
                         <div class="form-inline m-top-30">

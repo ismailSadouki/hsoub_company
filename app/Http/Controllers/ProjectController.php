@@ -38,15 +38,15 @@ class ProjectController extends Controller
     public function store(StoreProject $request)
     {
 
-        $project = new Project;
-        $project->title_ar = $request->title_ar;
-        $project->title_en = $request->title_en;
-        $project->link = $request->link;
-        $project->desc_ar = $request->desc_ar;
-        $project->desc_en = $request->desc_en;
-        $project->image = $this->uploadImage( $request->image );
-
-        $project->save();
+        $data = [
+            'title_ar' => $request->title_ar,
+            'title_en' => $request->title_en,
+            'link' => $request->link,
+            'desc_ar' => $request->desc_ar,
+            'desc_en' => $request->desc_en,
+            'image' => $this->uploadImage( $request->image ),
+        ];
+        Project::create($data);
         
         return back()->with('success',__('messages.Project Added successfully'));
        
@@ -64,13 +64,11 @@ class ProjectController extends Controller
         $lang = LaravelLocalization::getCurrentLocale();
 
         $project = Project::where('id',$id)->select(
-
             'id',
             'desc_'.$lang.' as desc',   
             'image',
             'link'
-
-       )->first();
+        )->first();
        
         return response()->json(array(
             'project' => $project
@@ -97,16 +95,18 @@ class ProjectController extends Controller
      */
     public function update(StoreProject $request,Project $project)
     {
-        $project->title_ar = $request->title_ar;
-        $project->title_en = $request->title_en;
-        $project->link = $request->link;
-        $project->desc_ar = $request->desc_ar;
-        $project->desc_en = $request->desc_en;
+        $data = [
+            'title_ar' => $request->title_ar,
+            'title_en' => $request->title_en,
+            'link' => $request->link,
+            'desc_ar' => $request->desc_ar,
+            'desc_en' => $request->desc_en,
+            ];
         if($request->has('image')){
             Storage::disk('public')->delete($project->image);
-            $project->image = $this->uploadImage($request->image);
+            $data['image'] = $this->uploadImage($request->image);
         }
-        $project->update();
+        $project->update($data);
         return back()->with('success',__('messages.Project Updated Successfully'));
     }
 

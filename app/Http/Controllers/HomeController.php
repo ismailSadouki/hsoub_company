@@ -27,7 +27,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $lang = LaravelLocalization::getCurrentLocale();
+        $lang = LaravelLocalization::getCurrentLocale(); // ar or en 
+
+        $direction = LaravelLocalization::getCurrentLocaleDirection(); // rtl or ltr
+
         $projects = Project::select(
 
                  'id',
@@ -38,7 +41,7 @@ class HomeController extends Controller
 
             )->latest()->paginate(8);
             
-        return view('home',compact('projects'));
+        return view('home.index',compact('projects','direction'));
 
     }
 }

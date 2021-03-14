@@ -9,5 +9,5 @@ return [
     'Project Deleted Successfully' => 'تم حذف المشروع بنجاح',
     'Project Updated Successfully' => 'تم تحديث المشروع بنجاح',
     'Project Added successfully' => 'تم اضافة المشروع بنجاح',
-
+    'Updated Successfully' => 'تم التحديث بنجاح'
 ];

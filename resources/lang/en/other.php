@@ -41,4 +41,5 @@ return [
     'Twitter' => 'Twitter',
     'Delete' => 'Delete',
     'Linked In' => 'Linked In',
+    'Profile' => 'Profile',
 ];

@@ -27,11 +27,7 @@
   
 
     <div class="container" "> 
-        <div class="attr-nav">
-            <ul>
-                <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
-            </ul>
-        </div> 
+       
 
         <!-- Start Header Navigation -->
         <div class="navbar-header " >
@@ -51,6 +47,7 @@
             </div>
 
             <ul class="nav navbar-nav navbar-right">
+                
                 <!-- Arabic && English -->
                 @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                     <li>
@@ -73,17 +70,25 @@
                             <a href="{{route('setting.edit')}}">{{__('nav.Setting')}}</a>
                         </li>  
                     @endadmin    
-                        <li>
-                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); 
-                                                            document.getElementById('logout-form').submit();">
-                                {{__('auth.Logout')}}
+                       
+                        <li class="nav-item dropdown" >
+                            <a class="nav-link dropdown-toggle" href="{{route('profile')}}" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{auth()->user()->name}}
                             </a>
+                            <ul class="dropdown-menu dropdown-menu-dark " aria-labelledby="navbarDarkDropdownMenuLink" >
+                                <li><a class="dropdown-item" href="{{route('profile')}}" style="float: {{LaravelLocalization::getCurrentLocaleDirection() == 'ltr' ? 'left' : ''}}">{{__('other.Profile')}}</a></li>
+                              <li><a class="dropdown-item" style="float: {{LaravelLocalization::getCurrentLocaleDirection() == 'ltr' ? 'left' : ''}}" href="{{ route('logout') }}"href="{{ route('logout') }}" onclick="event.preventDefault(); 
+                                document.getElementById('logout-form').submit();">
+                                    {{__('auth.Logout')}}
+                                   </a>
+                               </li>
+                            </ul>
                         </li>
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>
-                                        
+                                    
                 @else 
                         <li>
                             <a href="{{ route('register') }}">{{__('auth.Register')}}</a>

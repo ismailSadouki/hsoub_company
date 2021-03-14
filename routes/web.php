@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Auth;
@@ -40,4 +41,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'l
     Route::post('/newsletter/send',[NewsletterController::class , 'sendNewsletter'])->name('newsletter.send')->middleware('Admin');
     Route::post('/newsletter/subscribe/', [NewsletterController::class,'subscribe'])->name('newsletter.subscribe');
 
+//Profile Url    
+    Route::get('/profile',[ProfileController::class, 'index'])->name('profile');
+    Route::patch('/profile',[ProfileController::class, 'update'])->name('profile.update');
+    
 });

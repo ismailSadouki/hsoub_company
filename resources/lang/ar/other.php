@@ -41,6 +41,8 @@ return [
     'Twitter' => 'تويتير',
     'Linked In' => 'لينكد ان',
     'Delete' => 'حذف',
+    'Profile' => 'الصفحة الشخصية',
+    
     
     
 ];
