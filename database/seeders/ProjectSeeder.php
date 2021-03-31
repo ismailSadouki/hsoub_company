@@ -29,7 +29,7 @@ class ProjectSeeder extends Seeder
             'desc_ar' => 'أكبر منصة عمل حر في العالم العربي',
             'desc_en' => 'The largest Arabic freelancing platform',
             'link' => 'https://mostaql.com',
-            'image' => 'images/ana2.png',
+            'image' => 'images/mostaql.png',
         ]);
 
         Project::create([
@@ -38,7 +38,7 @@ class ProjectSeeder extends Seeder
             'desc_ar' => 'السوق العربي لبيع وشراء الخدمات المصغّرة',
             'desc_en' => 'Digital skills and micro services marketplace',
             'link' => 'https://khamsat.com/',
-            'image' => 'images/ana3.png',
+            'image' => 'images/khamsat.jpg',
         ]);
             
                 
@@ -57,7 +57,7 @@ class ProjectSeeder extends Seeder
             'desc_ar' => 'دورات برمجة شاملة من الصفر حتى الاحتراف',
             'desc_en' => 'Hands-on, skills based programming courses',
             'link' => 'https://academy.hsoub.com/',
-            'image' => 'images/ana5.png',
+            'image' => 'images/academy.png',
         ]);
 
         Project::create([

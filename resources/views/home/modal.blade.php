@@ -8,7 +8,7 @@
                     <div class="col-md-4" style="{{$direction  == 'rtl' ? 'float: right;' : ''}}">
                         <div>
                             <div>
-                                <img src="" id="pimage" alt="" />
+                                <img src="" id="pimage" alt="" width="262.5" height="230"/>
                             </div>
                         </div>
                     </div>
