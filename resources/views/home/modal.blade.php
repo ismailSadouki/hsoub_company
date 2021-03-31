@@ -27,9 +27,9 @@
          
                 <button type="button" class=" btn btn-gray" data-dismiss="modal" aria-label="Close">{{__('home.Cancel')}}</button>
            
-
-                <a href="" class="btn btn-warning" id="pedit" style="cursor:pointer">{{__('home.Edit')}}</a>
-                
+                @admin
+                    <a href="" class="btn btn-warning" id="pedit" style="cursor:pointer">{{__('home.Edit')}}</a>
+                @endadmin
                 <a href="" class="btn btn-primary" id="plink" style="cursor:pointer">{{__('home.Show')}}</a>
           </div>
         </div>
